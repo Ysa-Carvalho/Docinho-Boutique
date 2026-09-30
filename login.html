@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Docinho Boutique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="pagina-login">
+
+  <main class="caixa-login">
+    <h1 class="logo logo-grande">Docinho Boutique</h1>
+    <p class="frase-login">Entre para ver nossos achadinhos ♡</p>
+
+    <div class="abas">
+      <button class="aba ativa" data-aba="entrar">Entrar</button>
+      <button class="aba" data-aba="cadastrar">Cadastrar</button>
+    </div>
+
+    <p class="mensagem-sucesso" id="mensagem-sucesso" hidden></p>
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <form id="form-login" class="formulario" novalidate>
+      <div class="campo">
+        <label for="login-email">E-mail</label>
+        <input type="email" id="login-email" placeholder="voce@email.com">
+        <small class="erro" id="erro-login-email"></small>
+      </div>
+      <div class="campo">
+        <label for="login-senha">Senha</label>
+        <input type="password" id="login-senha" placeholder="Sua senha">
+        <small class="erro" id="erro-login-senha"></small>
+      </div>
+      <small class="erro erro-geral" id="erro-login-geral"></small>
+      <button type="submit" class="btn btn-largo">Entrar</button>
+    </form>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <form id="form-cadastro" class="formulario" novalidate hidden>
+      <div class="campo">
+        <label for="cad-nome">Nome</label>
+        <input type="text" id="cad-nome" placeholder="Seu nome">
+        <small class="erro" id="erro-cad-nome"></small>
+      </div>
+      <div class="campo">
+        <label for="cad-email">E-mail</label>
+        <input type="email" id="cad-email" placeholder="voce@email.com">
+        <small class="erro" id="erro-cad-email"></small>
+      </div>
+      <div class="campo">
+        <label for="cad-cep">CEP (opcional)</label>
+        <input type="text" id="cad-cep" placeholder="Só números" maxlength="9">
+        <small class="erro" id="erro-cad-cep"></small>
+      </div>
+      <div class="campo">
+        <label for="cad-cidade">Cidade</label>
+        <input type="text" id="cad-cidade" placeholder="Preenchida pelo CEP" readonly>
+      </div>
+      <div class="campo">
+        <label for="cad-senha">Senha</label>
+        <input type="password" id="cad-senha" placeholder="Mínimo de 6 caracteres">
+        <small class="erro" id="erro-cad-senha"></small>
+      </div>
+      <div class="campo">
+        <label for="cad-confirmar">Confirmar senha</label>
+        <input type="password" id="cad-confirmar" placeholder="Repita a senha">
+        <small class="erro" id="erro-cad-confirmar"></small>
+      </div>
+      <button type="submit" class="btn btn-largo">Criar minha conta</button>
+    </form>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

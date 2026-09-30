@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docinho Boutique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Porteiro: se não existe ninguém logado, manda para a tela de login -->
+  <script>
+    if (!localStorage.getItem("usuarioLogado")) {
+      location.replace("login.html");
+    }
+  </script>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container topo-conteudo">
+      <a href="#banner" class="logo">Docinho Boutique</a>
+      <nav class="menu">
+        <a href="#produtos">Achadinhos</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+      <div class="topo-usuario">
+        <span id="nome-usuario"></span>
+        <span class="favoritos-topo" title="Seus favoritos">♥ <strong id="contador-favoritos">0</strong></span>
+        <button class="btn btn-pequeno btn-contorno" id="botao-sair">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SEÇÃO 1: BANNER (carrossel de imagens) -->
+    <section id="banner" class="container secao-banner">
+      <div class="carrossel">
+        <div class="trilho" id="trilho-banner"></div>
+        <button class="seta seta-esq" id="banner-anterior" aria-label="Slide anterior">‹</button>
+        <button class="seta seta-dir" id="banner-proximo" aria-label="Próximo slide">›</button>
+        <div class="pontos" id="pontos-banner"></div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: PRODUTOS (vêm da fakestoreapi) -->
+    <section id="produtos" class="container secao">
+      <h2 class="titulo-secao">Achadinhos da loja</h2>
+      <p class="subtitulo-secao">Produtos que chegam de uma API, com carinho.</p>
+      <div class="grade-produtos" id="lista-produtos"></div>
+    </section>
+
+    <!-- SEÇÃO 3: DEPOIMENTOS (carrossel de cards) -->
+    <section id="depoimentos" class="secao secao-colorida">
+      <div class="container">
+        <h2 class="titulo-secao">Quem ama, conta</h2>
+        <p class="subtitulo-secao">O que as clientes falam sobre a gente.</p>
+        <div class="carrossel carrossel-depoimentos">
+          <div class="trilho" id="trilho-depoimentos"></div>
+          <button class="seta seta-esq" id="depo-anterior" aria-label="Depoimento anterior">‹</button>
+          <button class="seta seta-dir" id="depo-proximo" aria-label="Próximo depoimento">›</button>
+          <div class="pontos" id="pontos-depoimentos"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: SOBRE / BENEFÍCIOS -->
+    <section id="sobre" class="container secao">
+      <h2 class="titulo-secao">Por que amar a Docinho</h2>
+      <p class="subtitulo-secao">Três motivos para se sentir linda todos os dias.</p>
+      <div class="grade-beneficios" id="lista-beneficios"></div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>Feito com carinho para o projeto do curso Full-Stack ♡</p>
+  </footer>
+
+  <script src="home.js"></script>
+</body>
+</html>
