@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Porteiro: se não existe ninguém logado, manda para a tela de login -->
   <script>
     if (!localStorage.getItem("usuarioLogado")) {
       location.replace("login.html");
@@ -35,7 +34,6 @@
 
   <main>
 
-    <!-- SEÇÃO 1: BANNER (carrossel de imagens) -->
     <section id="banner" class="container secao-banner">
       <div class="carrossel">
         <div class="trilho" id="trilho-banner"></div>
@@ -45,14 +43,12 @@
       </div>
     </section>
 
-    <!-- SEÇÃO 2: PRODUTOS (vêm da fakestoreapi) -->
     <section id="produtos" class="container secao">
       <h2 class="titulo-secao">Achadinhos da loja</h2>
       <p class="subtitulo-secao">Produtos que chegam de uma API, com carinho.</p>
       <div class="grade-produtos" id="lista-produtos"></div>
     </section>
 
-    <!-- SEÇÃO 3: DEPOIMENTOS (carrossel de cards) -->
     <section id="depoimentos" class="secao secao-colorida">
       <div class="container">
         <h2 class="titulo-secao">Quem ama, conta</h2>
@@ -66,7 +62,6 @@
       </div>
     </section>
 
-    <!-- SEÇÃO 4: SOBRE / BENEFÍCIOS -->
     <section id="sobre" class="container secao">
       <h2 class="titulo-secao">Por que amar a Docinho</h2>
       <p class="subtitulo-secao">Três motivos para se sentir linda todos os dias.</p>

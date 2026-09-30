@@ -1,4 +1,3 @@
-/* ============ VARIÁVEIS (cores em um lugar só) ============ */
 :root {
   --rosa: #ffd1e3;
   --rosa-forte: #f78fb3;
@@ -12,7 +11,6 @@
   --raio: 22px;
 }
 
-/* ============ BASE ============ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -25,7 +23,6 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 .container { width: min(1100px, 92%); margin: 0 auto; }
 
-/* ============ BOTÕES ============ */
 .btn {
   display: inline-block;
   border: none;
@@ -46,7 +43,6 @@ a { color: inherit; text-decoration: none; }
 .btn-contorno:hover { background: var(--rosa); color: var(--rosa-escuro); }
 .btn-largo { width: 100%; margin-top: 8px; }
 
-/* ============ TOPO ============ */
 .topo {
   position: sticky;
   top: 0;
@@ -69,13 +65,11 @@ a { color: inherit; text-decoration: none; }
 .topo-usuario { display: flex; align-items: center; gap: 12px; font-weight: 600; }
 .favoritos-topo { color: var(--rosa-escuro); }
 
-/* ============ SEÇÕES ============ */
 .secao { padding: 60px 0; }
 .secao-colorida { background: linear-gradient(180deg, var(--lilas), var(--rosa)); }
 .titulo-secao { font-family: "Pacifico", cursive; font-weight: 400; text-align: center; font-size: 2rem; color: var(--rosa-escuro); }
 .subtitulo-secao { text-align: center; margin-bottom: 30px; }
 
-/* ============ CARROSSEL (serve para banner e depoimentos) ============ */
 .carrossel { position: relative; overflow: hidden; border-radius: var(--raio); }
 .trilho { display: flex; transition: transform 0.6s ease; }
 .slide { min-width: 100%; }
@@ -104,7 +98,6 @@ a { color: inherit; text-decoration: none; }
 .ponto { width: 12px; height: 12px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.7); cursor: pointer; }
 .ponto.ativo { background: var(--rosa-forte); transform: scale(1.25); }
 
-/* ============ BANNER ============ */
 .secao-banner { padding-top: 24px; }
 .slide-banner {
   min-height: 420px;
@@ -118,7 +111,6 @@ a { color: inherit; text-decoration: none; }
 .banner-texto h1 { font-family: "Pacifico", cursive; font-weight: 400; font-size: 2.4rem; line-height: 1.25; color: var(--rosa-escuro); margin-bottom: 12px; }
 .banner-texto p { margin-bottom: 20px; font-weight: 600; }
 
-/* ============ PRODUTOS ============ */
 .grade-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 22px; }
 .card-produto {
   position: relative;
@@ -161,7 +153,6 @@ a { color: inherit; text-decoration: none; }
 .aviso { grid-column: 1 / -1; text-align: center; padding: 30px; background: var(--pessego); border-radius: var(--raio); }
 .aviso .btn { margin-top: 12px; }
 
-/* ============ DEPOIMENTOS ============ */
 .carrossel-depoimentos { background: transparent; overflow: hidden; padding-bottom: 40px; }
 .slide-depoimento { padding: 10px 64px; display: flex; justify-content: center; }
 .card-depoimento {
@@ -196,7 +187,6 @@ a { color: inherit; text-decoration: none; }
 .card-depoimento strong { color: var(--rosa-escuro); }
 .card-depoimento small { display: block; }
 
-/* ============ BENEFÍCIOS ============ */
 .grade-beneficios { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
 .card-beneficio { border-radius: var(--raio); padding: 28px; text-align: center; box-shadow: var(--sombra); }
 .card-beneficio .icone { font-size: 2.4rem; }
@@ -205,10 +195,8 @@ a { color: inherit; text-decoration: none; }
 .card-beneficio:nth-child(2) { background: var(--menta); }
 .card-beneficio:nth-child(3) { background: var(--lilas); }
 
-/* ============ RODAPÉ ============ */
 .rodape { text-align: center; padding: 26px; background: var(--rosa); color: var(--rosa-escuro); font-weight: 600; }
 
-/* ============ PÁGINA DE LOGIN ============ */
 .pagina-login {
   min-height: 100vh;
   display: flex;
@@ -250,7 +238,6 @@ a { color: inherit; text-decoration: none; }
 .erro-geral { text-align: center; margin-bottom: 4px; }
 .mensagem-sucesso { background: var(--menta); border-radius: 14px; padding: 10px 14px; margin-bottom: 14px; text-align: center; font-weight: 600; }
 
-/* ============ CELULAR ============ */
 @media (max-width: 700px) {
   .menu { display: none; }
   .slide-banner { min-height: 340px; padding: 30px 30px 50px; }

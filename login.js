@@ -1,33 +1,23 @@
-// ============================================================
-// LOGIN E CADASTRO
-// Tudo fica salvo no localStorage (a "gavetinha" do navegador).
-// ============================================================
+const CHAVE_USUARIOS = "usuarios";        
+const CHAVE_SESSAO = "usuarioLogado";     
 
-const CHAVE_USUARIOS = "usuarios";        // lista de todas as contas criadas
-const CHAVE_SESSAO = "usuarioLogado";     // quem está logado agora
-
-// ---------- Funções de apoio (arrow functions) ----------
 const pegarUsuarios = () => JSON.parse(localStorage.getItem(CHAVE_USUARIOS)) || [];
 const salvarUsuarios = (lista) => localStorage.setItem(CHAVE_USUARIOS, JSON.stringify(lista));
 
 const emailValido = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-// Escreve (ou limpa) a mensagem de erro embaixo de um campo
 const mostrarErro = (idErro, mensagem) => {
   document.getElementById(idErro).textContent = mensagem;
 };
 
-// Pinta a borda do campo de vermelho quando tem erro
 const marcarCampo = (idCampo, temErro) => {
   document.getElementById(idCampo).classList.toggle("invalido", temErro);
 };
 
-// Se já tem alguém logado, não precisa ver a tela de login
 if (localStorage.getItem(CHAVE_SESSAO)) {
   location.replace("index.html");
 }
 
-// ---------- Abas (Entrar / Cadastrar) ----------
 const abas = document.querySelectorAll(".aba");
 const formLogin = document.getElementById("form-login");
 const formCadastro = document.getElementById("form-cadastro");
@@ -48,17 +38,16 @@ abas.forEach((aba) => {
   });
 });
 
-// ---------- CEP: consulta na ViaCEP (função assíncrona) ----------
 const campoCep = document.getElementById("cad-cep");
 const campoCidade = document.getElementById("cad-cidade");
 
 const buscarCep = async () => {
-  const cep = campoCep.value.replace(/\D/g, ""); // tira tudo que não é número
+  const cep = campoCep.value.replace(/\D/g, ""); 
   campoCidade.value = "";
   mostrarErro("erro-cad-cep", "");
   marcarCampo("cad-cep", false);
 
-  if (cep === "") return; // CEP é opcional
+  if (cep === "") return; 
 
   if (cep.length !== 8) {
     mostrarErro("erro-cad-cep", "O CEP precisa ter 8 números.");
@@ -71,7 +60,7 @@ const buscarCep = async () => {
     if (!resposta.ok) throw new Error("Falha na consulta");
     const dados = await resposta.json();
 
-    // A ViaCEP responde { erro: true } quando o CEP não existe
+    
     if (dados.erro) {
       mostrarErro("erro-cad-cep", "CEP não encontrado.");
       marcarCampo("cad-cep", true);
@@ -85,11 +74,10 @@ const buscarCep = async () => {
   }
 };
 
-campoCep.addEventListener("blur", buscarCep); // blur = quando sai do campo
+campoCep.addEventListener("blur", buscarCep); 
 
-// ---------- CADASTRO ----------
 formCadastro.addEventListener("submit", async (evento) => {
-  evento.preventDefault(); // impede a página de recarregar
+  evento.preventDefault(); 
 
   const nome = document.getElementById("cad-nome").value.trim();
   const email = document.getElementById("cad-email").value.trim().toLowerCase();
@@ -98,7 +86,6 @@ formCadastro.addEventListener("submit", async (evento) => {
 
   let tudoCerto = true;
 
-  // Validação campo por campo
   if (nome.length < 3) {
     mostrarErro("erro-cad-nome", "Digite seu nome (mínimo 3 letras).");
     tudoCerto = false;
@@ -134,7 +121,6 @@ formCadastro.addEventListener("submit", async (evento) => {
   }
   marcarCampo("cad-confirmar", confirmar !== senha);
 
-  // Se o CEP foi preenchido, confere de novo antes de salvar
   if (campoCep.value.trim() !== "") {
     await buscarCep();
     if (campoCidade.value === "") tudoCerto = false;
@@ -142,11 +128,10 @@ formCadastro.addEventListener("submit", async (evento) => {
 
   if (!tudoCerto) return;
 
-  // Cada usuário é um OBJETO; a lista de usuários é um ARRAY de objetos
   const novoUsuario = {
     nome: nome,
     email: email,
-    senha: senha, // só para estudo! Em site de verdade a senha nunca fica assim.
+    senha: senha, 
     cep: campoCep.value.replace(/\D/g, ""),
     cidade: campoCidade.value,
   };
@@ -155,7 +140,6 @@ formCadastro.addEventListener("submit", async (evento) => {
   lista.push(novoUsuario);
   salvarUsuarios(lista);
 
-  // Volta para a aba de entrar com o e-mail já preenchido
   formCadastro.reset();
   campoCidade.value = "";
   trocarAba("entrar");
@@ -164,7 +148,6 @@ formCadastro.addEventListener("submit", async (evento) => {
   caixaSucesso.hidden = false;
 });
 
-// ---------- LOGIN ----------
 formLogin.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
@@ -192,7 +175,6 @@ formLogin.addEventListener("submit", (evento) => {
 
   if (!tudoCerto) return;
 
-  // Procura no array o usuário que tem esse e-mail e essa senha
   const encontrado = pegarUsuarios().find((u) => u.email === email && u.senha === senha);
 
   if (!encontrado) {
@@ -200,7 +182,6 @@ formLogin.addEventListener("submit", (evento) => {
     return;
   }
 
-  // Guarda só o necessário (nunca a senha) na "sessão"
   localStorage.setItem(CHAVE_SESSAO, JSON.stringify({ nome: encontrado.nome, email: encontrado.email }));
   location.href = "index.html";
 });
